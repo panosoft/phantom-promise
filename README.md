@@ -2,19 +2,19 @@
 
 A [PhantomJS](http://phantomjs.org/) bridge with a promise based api.
 
-[![npm](https://img.shields.io/npm/v/phantom-promise.svg)]()
-[![npm](https://img.shields.io/npm/l/phantom-promise.svg)]()
-[![Travis](https://img.shields.io/travis/panosoft/phantom-promise.svg)]()
-[![David](https://img.shields.io/david/panosoft/phantom-promise.svg)]()
-[![npm](https://img.shields.io/npm/dm/phantom-promise.svg)]()
+[![npm version](https://img.shields.io/npm/v/phantom-promise.svg)](https://www.npmjs.com/package/phantom-promise)
+[![npm license](https://img.shields.io/npm/l/phantom-promise.svg)](https://www.npmjs.com/package/phantom-promise)
+[![Travis](https://img.shields.io/travis/panosoft/phantom-promise.svg)](https://travis-ci.org/panosoft/phantom-promise)
+[![David](https://img.shields.io/david/panosoft/phantom-promise.svg)](https://david-dm.org/panosoft/phantom-promise)
+[![npm downloads](https://img.shields.io/npm/dm/phantom-promise.svg)](https://www.npmjs.com/package/phantom-promise)
 
-# Installation
+## Installation
 
-```
+```sh
 npm install phantom-promise
 ```
 
-# Usage
+## Usage
 
 ```js
 var Phantom = require('phantom');
@@ -36,13 +36,30 @@ phantom.initialize()
   });
 ```
 
-# API
+## API
 
-## create()
+- [`create`](#create)
+
+__Phantom__
+
+- [`createPage`](#createPage)
+- [`initialize`](#initialize)
+- [`shutdown`](#shutdown)
+
+__Page__
+
+- [`close`](#close)
+- [`evaluate`](#evaluate)
+- [`injectJs`](#injectJs)
+
+---
+
+<a name="create"/>
+#### create ( )
 
 Returns an instance of `Phantom`.
 
-### Example
+__Example__
 
 ```js
 var Phantom = require('phantom');
@@ -50,13 +67,16 @@ var Phantom = require('phantom');
 var phantom = Phantom.create();
 ```
 
-## Phantom
+---
 
-### createPage()
+### Phantom
+
+<a name="createPage"/>
+#### createPage ( )
 
 Creates a [Web Page](http://phantomjs.org/api/webpage/) in PhantomJs. Returns a `Promise` that is fulfilled with an instance of `Page`.
 
-#### Example
+__Example__
 
 ```js
 phantom.createPage()
@@ -65,13 +85,16 @@ phantom.createPage()
   })
 ```
 
-### initialize()
+---
+
+<a name="initialize"/>
+#### initialize ( )
 
 Initializes the `Phantom` instance. Returns a `Promise` that is fulfilled once the initialization is complete.
 
 This must be called before the instance can be used.
 
-#### Example
+__Example__
 
 ```js
 phantom.initialize()
@@ -80,38 +103,47 @@ phantom.initialize()
   });
 ```
 
-### shutdown()
+---
+
+<a name="shutdown"/>
+#### shutdown ( )
 
 Shuts down the phantom instance. Once this has been called, the instance is no longer operable unless it is re-initialized.
 
-#### Example
+__Example__
 
 ```js
 phantom.shutdown();
 ```
 
-## Page
+---
 
-### close()
+### Page
+
+<a name="close"/>
+#### close ( )
 
 Closes the page. Once this has been called, the page instance can no longer be used.
 
-#### Example
+__Example__
 
 ```js
 page.close();
 ```
 
-### evaluate( fn [,arg] )
+---
+
+<a name="evaluate"/>
+#### evaluate ( fn [,arg] )
 
 Evaluates a function on the page. Returns a `Promise` that is fulfilled with the return value of the function.
 
-#### Arguments
+__Arguments__
 
 - `fn` - The function to evaluate on the page. This function must call `window.callPhantom(result)` in order to return.
 - `arg` - An argument to evaluate `fn` with. This argument must be JSON-serializable (i.e. Closures, functions, DOM nodes, etc. will not work!).
 
-#### Example
+__Example__
 
 ```js
 var pageFunction = function (arg) {
@@ -125,15 +157,18 @@ page.evaluate(pageFunction, arg)
   });
 ```
 
-### injectJs( paths )
+---
+
+<a name="injectJs"/>
+#### injectJs ( paths )
 
 Injects external scripts into the page. The scripts are loaded in the order they are supplied so that dependencies can be met.
 
-#### Arguments
+__Arguments__
 
 - `paths` - A path or an array of paths to the script files to be injected.
 
-#### Example
+__Example__
 
 ```js
 page.injectJs('path/to/external/script.js');
