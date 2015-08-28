@@ -38,10 +38,9 @@ phantom.initialize()
 
 ## API
 
-- [`create`](#create)
-
 __Phantom__
 
+- [`create`](#create)
 - [`createPage`](#createPage)
 - [`initialize`](#initialize)
 - [`shutdown`](#shutdown)
@@ -50,9 +49,13 @@ __Page__
 
 - [`close`](#close)
 - [`evaluate`](#evaluate)
+- [`get`](#get)
 - [`injectJs`](#injectJs)
+- [`set`](#set)
 
 ---
+
+### Phantom
 
 <a name="create"/>
 #### create ( )
@@ -69,12 +72,12 @@ var phantom = Phantom.create();
 
 ---
 
-### Phantom
-
 <a name="createPage"/>
 #### createPage ( )
 
 Creates a [Web Page](http://phantomjs.org/api/webpage/) in PhantomJs. Returns a `Promise` that is fulfilled with an instance of `Page`.
+
+Pages have a default `viewportSize` of 1024x768 and support es5.
 
 __Example__
 
@@ -159,6 +162,26 @@ page.evaluate(pageFunction, arg)
 
 ---
 
+<a name="get"/>
+#### get ( property )
+
+Returns a Promise that is fulfilled with the requested page property.
+
+__Arguments__
+
+- `property` - A string determining the property to return.
+
+__Example__
+
+```js
+page.get('viewportSize')
+  .then(function (viewportSize) {
+    // ...
+  });
+```
+
+---
+
 <a name="injectJs"/>
 #### injectJs ( paths )
 
@@ -172,4 +195,22 @@ __Example__
 
 ```js
 page.injectJs('path/to/external/script.js');
+```
+
+---
+
+<a name="set"/>
+#### set ( property , value )
+
+Sets a page property.
+
+__Arguments__
+
+- `property` - A string determining the property to set.
+- `value` - The value to apply.
+
+__Example__
+
+```js
+page.set('viewportSize', {height: 768, width: 1024});
 ```
