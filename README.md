@@ -202,7 +202,7 @@ page.injectJs('path/to/external/script.js');
 <a name="set"/>
 #### set ( property , value )
 
-Sets a page property.
+Sets a page property. Returns a promise that is fulfilled with the result.
 
 __Arguments__
 
