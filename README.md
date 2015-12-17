@@ -57,7 +57,7 @@ __Page__
 
 ### Phantom
 
-<a name="create"/>
+<a name="create"></a>
 #### create ( )
 
 Returns an instance of `Phantom`.
@@ -72,7 +72,7 @@ var phantom = Phantom.create();
 
 ---
 
-<a name="createPage"/>
+<a name="createPage"></a>
 #### createPage ( )
 
 Creates a [Web Page](http://phantomjs.org/api/webpage/) in PhantomJs. Returns a `Promise` that is fulfilled with an instance of `Page`.
@@ -90,7 +90,7 @@ phantom.createPage()
 
 ---
 
-<a name="initialize"/>
+<a name="initialize"></a>
 #### initialize ( )
 
 Initializes the `Phantom` instance. Returns a `Promise` that is fulfilled once the initialization is complete.
@@ -108,7 +108,7 @@ phantom.initialize()
 
 ---
 
-<a name="shutdown"/>
+<a name="shutdown"></a>
 #### shutdown ( )
 
 Shuts down the phantom instance. Once this has been called, the instance is no longer operable unless it is re-initialized.
@@ -123,7 +123,7 @@ phantom.shutdown();
 
 ### Page
 
-<a name="close"/>
+<a name="close"></a>
 #### close ( )
 
 Closes the page. Once this has been called, the page instance can no longer be used.
@@ -136,7 +136,7 @@ page.close();
 
 ---
 
-<a name="evaluate"/>
+<a name="evaluate"></a>
 #### evaluate ( fn [,arg] )
 
 Evaluates a function on the page. Returns a `Promise` that is fulfilled with the return value of the function.
@@ -162,7 +162,7 @@ page.evaluate(pageFunction, arg)
 
 ---
 
-<a name="get"/>
+<a name="get"></a>
 #### get ( property )
 
 Returns a Promise that is fulfilled with the requested page property.
@@ -182,7 +182,7 @@ page.get('viewportSize')
 
 ---
 
-<a name="injectJs"/>
+<a name="injectJs"></a>
 #### injectJs ( paths )
 
 Injects external scripts into the page. The scripts are loaded in the order they are supplied so that dependencies can be met.
@@ -199,7 +199,7 @@ page.injectJs('path/to/external/script.js');
 
 ---
 
-<a name="set"/>
+<a name="set"></a>
 #### set ( property , value )
 
 Sets a page property. Returns a promise that is fulfilled with the result.
