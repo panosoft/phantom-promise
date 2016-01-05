@@ -1,6 +1,6 @@
 {
   "name": "phantom-promise",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A PhantomJS bridge with a promise based api.",
   "repository": "panosoft/phantom-promise",
   "engines": {
