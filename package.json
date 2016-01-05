@@ -3,21 +3,24 @@
   "version": "0.1.6",
   "description": "A PhantomJS bridge with a promise based api.",
   "repository": "panosoft/phantom-promise",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --harmony_arrow_functions"
+    "test": "mocha",
+    "test:debug": "mocha --debug-brk"
   },
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "co": "^4.6.0",
-    "es5-shim": "^4.1.10",
-    "is_js": "^0.7.4",
-    "phantom": "^0.7.2",
-    "phantomjs": "^1.9.17"
+    "is_js": "^0.7.6",
+    "phantom": "^0.8.0",
+    "phantomjs": "^1.9.0"
   },
   "devDependencies": {
     "chai": "^3.2.0",

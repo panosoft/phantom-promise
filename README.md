@@ -3,10 +3,7 @@
 A [PhantomJS](http://phantomjs.org/) bridge with a promise based api.
 
 [![npm version](https://img.shields.io/npm/v/phantom-promise.svg)](https://www.npmjs.com/package/phantom-promise)
-[![npm license](https://img.shields.io/npm/l/phantom-promise.svg)](https://www.npmjs.com/package/phantom-promise)
 [![Travis](https://img.shields.io/travis/panosoft/phantom-promise.svg)](https://travis-ci.org/panosoft/phantom-promise)
-[![David](https://img.shields.io/david/panosoft/phantom-promise.svg)](https://david-dm.org/panosoft/phantom-promise)
-[![npm downloads](https://img.shields.io/npm/dm/phantom-promise.svg)](https://www.npmjs.com/package/phantom-promise)
 
 ## Installation
 
@@ -17,22 +14,21 @@ npm install phantom-promise
 ## Usage
 
 ```js
-var Phantom = require('phantom');
+var Phantom = require('phantom-promise');
 
 var phantom = Phantom.create();
 phantom.initialize()
-  .then(function () {
-    return phantom.createPage();
-  })
-  .then(function (page) {
+  .then(() => phantom.createPage())
+  .then((page) => {
     var pageFunction = function () {
       var result = 'Hello from Phantom.';
       window.callPhantom(result);
     };
     return page.evaluate(pageFunction);
   })
-  .then(function (result) {
-    console.log(result); // Hello from Phantom.
+  .then((result) => {
+    console.log(result); //=> Hello from Phantom.
+    phantom.shutdown();
   });
 ```
 
@@ -65,7 +61,7 @@ Returns an instance of `Phantom`.
 __Example__
 
 ```js
-var Phantom = require('phantom');
+var Phantom = require('phantom-promise');
 
 var phantom = Phantom.create();
 ```
@@ -77,13 +73,11 @@ var phantom = Phantom.create();
 
 Creates a [Web Page](http://phantomjs.org/api/webpage/) in PhantomJs. Returns a `Promise` that is fulfilled with an instance of `Page`.
 
-Pages have a default `viewportSize` of 1024x768 and support es5.
-
 __Example__
 
 ```js
 phantom.createPage()
-  .then(function (page) {
+  .then((page) => {
     // ...
   })
 ```
@@ -101,7 +95,7 @@ __Example__
 
 ```js
 phantom.initialize()
-  .then(function () {
+  .then(() => {
     // ...
   });
 ```
@@ -152,11 +146,11 @@ __Example__
 var pageFunction = function (arg) {
   window.callPhantom(arg);
 };
-var arg = 'Hello from Phantom.';
 
+var arg = 'Hello from Phantom.';
 page.evaluate(pageFunction, arg)
-  .then(function (result) {
-    console.log(result); // 'Hello from Phantom.'
+  .then((result) => {
+    console.log(result); //=> 'Hello from Phantom.'
   });
 ```
 
@@ -175,7 +169,7 @@ __Example__
 
 ```js
 page.get('viewportSize')
-  .then(function (viewportSize) {
+  .then((viewportSize) => {
     // ...
   });
 ```

@@ -48,15 +48,6 @@ describe('Page', function () {
 					expect(page).to.include.all.keys(['close', 'evaluate', 'get', 'injectJs', 'set']);
 				});
 		});
-		it('set viewportSize to 1024 x 768 by default', function () {
-			return expect(page.get('viewportSize')).to.eventually.deep.equal({ height: 768, width: 1024 });
-		});
-		it('inject es5-shim by default', function () {
-			var test = function () {
-				window.callPhantom(typeof Function.prototype.bind === 'function');
-			};
-			return expect(page.evaluate(test)).to.eventually.be.true;
-		});
 	});
 	describe('get', function () {
 		it('return Promise fulfilled with property', function () {
